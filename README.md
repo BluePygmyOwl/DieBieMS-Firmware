@@ -1,21 +1,21 @@
-# Other parts of this project
-This is the firmware repository containing all firmware source files. There are three more repositories for this project:<br>
-[DieBieMS Hardware](https://github.com/DieBieEngineering/DieBieMS) The hardware sourcefiles.<br>
-[DieBieMS Bootloader](https://github.com/DieBieEngineering/DieBieMS-Bootloader) can be flashed with the BMS Tool in the firmware tab.<br>
-[DieBieMS Configuration tool](https://github.com/DieBieEngineering/DieBieMS-Tool) the tool to configure the BMS and upload the bootloader / update the main firmware.
+# DieBieMS firmware for GCC compiling
+------
+This is the firmware repository containing the DieBieMS firmware version 0,21 but which I managed to compile with SW4STM32. 
+The origin of this is that I wanted to make some own tweak to the firmware but don't have access to the full version of
+Keil which was needed to compile. <br>
 
-When attempting to install this firmware and bootloader you need to know the flash mapping. Make sure to use a microcontroller with at least 256kB of flash (eg the STM32F303CCT6 as described by the bom). When you use a lower size you cannot use the bootloader (flash is to small), when you use higher you don't utilize all the potential flash area.
+[Here](https://github.com/DieBieEngineering/DieBieMS) is the issue that started this and has some story to it. 
+Big thank you for @kshwong<br>
 
-When flashing the application the start address should be: <b>0x08000000</b>
-When flashing the bootloader the start address should be: <b>0x08032000</b>
+To be honest, there are some items to improve now:
+- it is based on the master branch of DieBieEngineering/DieBieMS firmware at version 0.21. But DieBieEngineering 
+is working on later versions with more features. One of them 
+is the [efoildevelopment](https://github.com/DieBieEngineering/DieBieMS-Firmware/tree/efoildevelop) branch which will be 
+merged somewhere soon.
+- I managed to get it done via SW4STM32 but to be honest, there was some trial and error. SW4STM32 doesn't allow you to make 
+fundamental changes if the project was imported incorrectly. 
+- I haven't had the chance to test all features yet (have no VESC)
+- The DieBieMS-Tool software will not like the 0.21 version. So in order to work with that Tool, please have a look at the 
+issue [reported](https://github.com/DieBieEngineering/DieBieMS-Tool/issues/6)<br>
 
-The flash is formatted as follows (summary):
 
-((uint32_t)0x08000000) /* Base @ of Page 0, 2 Kbytes */  // Startup Code - Main application<br>
-((uint32_t)0x08000800) /* Base @ of Page 1, 2 Kbytes */  // Page0 - EEPROM emulation<br>
-((uint32_t)0x08001000) /* Base @ of Page 2, 2 Kbytes */  // Page1 - EEPROM emulation<br>
-((uint32_t)0x08001800) /* Base @ of Page 3, 2 Kbytes */  // Remainder of the main application firmware stars from here.<br>
-((uint32_t)0x08019000) /* Base @ of Page 50, 2 Kbytes */  // New app firmware base addres<br>
-((uint32_t)0x08032000) /* Base @ of Page 100, 2 Kbytes */  // Bootloader base<br>
-
-See "modFlash.h" and "modFlash.c" for more info.
