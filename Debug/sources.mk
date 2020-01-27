@@ -17,11 +17,12 @@ C_DEPS :=
 SUBDIRS := \
 Device \
 Drivers/HWDrivers/Src \
-Drivers/STM32F3xx_HAL_Driver/Src \
+Drivers/STM32F3XX_HAL_Driver/Src \
 Drivers/SWDrivers/Src \
 Libraries/Src \
 Logos \
 Main \
 Modules/Src \
+. \
 Src \
 

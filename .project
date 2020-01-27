@@ -24,11 +24,4 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 		<nature>fr.ac6.mcu.ide.core.MCUProjectNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>Src/syscalls.c</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/syscalls.c</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>

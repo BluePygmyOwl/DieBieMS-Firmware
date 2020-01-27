@@ -14,7 +14,7 @@ RM := rm -rf
 -include Logos/subdir.mk
 -include Libraries/Src/subdir.mk
 -include Drivers/SWDrivers/Src/subdir.mk
--include Drivers/STM32F3xx_HAL_Driver/Src/subdir.mk
+-include Drivers/STM32F3XX_HAL_Driver/Src/subdir.mk
 -include Drivers/HWDrivers/Src/subdir.mk
 -include Device/subdir.mk
 -include subdir.mk
